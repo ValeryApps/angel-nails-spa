@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Slide } from "react-awesome-reveal";
 import { AppointmentButton } from "./buttons/AppointmentButton";
+import { data } from "../data/hero";
 
 export const Hero = () => {
   return (
@@ -27,33 +28,37 @@ export const Hero = () => {
         className="mySwiper w-full h-[650px] overflow-hidden"
         effect="coverflow"
       >
-        <SwiperSlide>
-          <img
-            src="/image/make.jpg"
-            alt=""
-            className="w-full h-[650px] object-cover"
-          />
+        {data.map((d, i) => (
+          <SwiperSlide>
+            <img
+              src={d.image}
+              alt=""
+              key={i}
+              className="w-full h-[650px] object-cover"
+            />
 
-          <div className="absolute top-0 z-10 w-full h-[650px] bg-[#0000007e]">
-            <Slide className="mt-32">
-              <div className="flex flex-col gap-5">
-                <h1 className="text-center font-extrabold text-white text-2xl">
-                  SPA & BEAUTY CENTER
-                </h1>
-                <h1 className="text-center text-5xl md:text-7xl  font-extrabold text-white">
-                  MAKE UP
-                </h1>
-                <p className="text-center font-extrabold text-white text-2xl">
-                  Angel Nails is a cosmetic and personal care center
-                </p>
-                <div className="text-center mt-4">
-                  <AppointmentButton white={false} />
+            <div className="absolute top-0 z-10 w-full h-[650px] bg-[#0000007e]">
+              <Slide className="mt-32">
+                <div className="flex flex-col gap-5">
+                  <h1 className="text-center font-extrabold text-white text-2xl">
+                    SPA & BEAUTY CENTER
+                  </h1>
+                  <h1 className="text-center text-5xl md:text-7xl  font-extrabold text-white">
+                    {d.service}
+                  </h1>
+                  <p className="text-center font-extrabold text-white text-2xl">
+                    Angel Nails is a cosmetic and personal care center
+                  </p>
+                  <div className="text-center mt-4">
+                    <AppointmentButton white={false} />
+                  </div>
                 </div>
-              </div>
-            </Slide>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
+              </Slide>
+            </div>
+          </SwiperSlide>
+        ))}
+
+        {/* <SwiperSlide>
           <img
             src="/image/ped.jpg"
             alt=""
@@ -131,7 +136,7 @@ export const Hero = () => {
               </div>
             </Slide>
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );
